@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a6d27a9f7c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #e84118;
+
+        }
+        h2{
+            position:absolute;
+            top:40%;
+            left:36%;
+            font-family: 'Balsamiq Sans', cursive;
+        }
+        .search-box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #2f3640;
+            height: 50px;
+            border-radius: 40px;
+            padding: 10px;
+            margin-top: 3%;
+        }
+        .search-box:hover >.search-txt{
+            width: 240px;
+            padding:0 6px ;
+        }
+        .search-btn{
+             color: #e84118;
+             float: right;
+             width: 40px;
+             border-radius: 50%;
+             background: #2f3640;
+             display: flex;
+             justify-content:center;
+             align-items: center;
+             text-decoration: none;
+         }
+         .search-btn:hover{
+             text-decoration: none;
+             color: #e84118
+         }
+         button{
+             background: #2f3640;
+             border-radius: 50%;
+             border-color: #2f3640;
+             text-decoration: none;
+         }
+         .search-txt{
+             border:none;
+             background: none;
+             outline:none;
+             float: left;
+             padding:0;
+             
+             font-size: 16px;
+             transition:0.3s;
+             line-height: 30px;
+             width: 0px;
+         }
+         input[type="text"]{
+             background: #2f3640;
+             border-radius: 15%;
+             font-weight: 800;
+             font-size: xx-large;
+             text-align: center;
+             align-items: center;
+             font-family: 'Balsamiq Sans', cursive;
+             color: #e84118;
+
+         }
+         .fa-search:hover{
+             color: #e84118;
+
+         }
+         ::-webkit-input-placeholder {
+             font-weight: 800;
+}
+    </style>
+    
+</head>
+
+<body>
+    <h2>Please Search Your Respective City</h2>
+    
+        <form id="myform" action="/results" method="GET">
+            
+            <div class="search-box">
+                <input type="text" placeholder="CITY" name="city" class="search-txt">
+                
+                <a  href="javascript:document.getElementById('myform').submit()" class="search-btn">
+                <i class="fas fa-search fa-2x"></i></a>
+            </div>
+            
+            
+            
+        </form>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    </body>
+</html>

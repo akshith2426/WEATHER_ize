@@ -1,0 +1,209 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/a6d27a9f7c.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+        <style>
+            #now{
+                float: right;
+                width: 200px;
+                height: 140px;
+                margin-right: 5%;
+                margin-top: 2%;
+            }
+            #condition{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 600;
+            }
+            #temp{
+                font-weight: 500;
+                font-size: 70px;
+            }
+            h2{
+                font-family: 'Balsamiq Sans', cursive;
+                font-weight: 500;
+
+            }
+            #jumbo1{
+                background-color: rgba(255, 255, 0,0.9);
+                
+            }
+            .context{
+                float: right;
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+                opacity: 0.6;
+            }
+            li{
+                list-style-type: none;
+
+            }
+            .explain{
+                margin-left: 15%;
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+            }
+            #press{
+                margin-left: 17%;
+            }
+            
+            #humid{
+                margin-left: 16.5%;
+            }
+            #sunset{
+                margin-left: 12%;
+            }
+            #moonrise{
+                margin-left:12%;
+            }
+            
+            nav{
+                height: 10%;
+            }
+            #state{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+                color: whitesmoke;
+            }
+            #location{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: x-large;
+                font-weight: 300;
+                opacity: 0.8;
+                color: whitesmoke;
+            }
+            .container{
+                margin-top: 1%;
+            }
+            .navbar-brand{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+                
+                /* style="background-color: #e3f2fd; */
+            }
+            #search{
+                color: whitesmoke;
+            }
+            .units{
+                margin-left:1%;
+                
+            }
+            .forecast{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: x-large;
+                font-weight: 700;
+            }
+            .forecastemp{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+                float: right;
+            }
+            #jump_bar{
+                font-family: 'Balsamiq Sans', cursive;
+                font-size: xx-large;
+                font-weight: 400;
+                color: whitesmoke;
+
+            }
+            #jumping{
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-light bg-dark">
+            <a class="navbar-brand" href="#"><span id="state"><%=parsedData['location']['name']%></span><br><span id="location"><%=parsedData['location']['region']%> ,<%=parsedData['location']['country']%></span></a>
+            <li class="nav-item active">
+                <a href="#jump" class="navbar-brand" id="jump_bar"><i class="fas fa-globe-americas fa-2x"></i> <span id="jumping">FORECAST</span></a>
+            </li>
+            <li class="nav-item active">
+                <a href="/" class="navbar-brand" id="search">Search Again</a>
+            </li>
+            
+            
+        </nav>
+        <div class="container">
+            <div class="jumbotron">
+                <h2>Presently</h2>
+                <img src="<%=parsedData['current']['condition']['icon']%>" id="now">
+                <p id="temp"><%=parsedData['current']['temp_c']%> °C</p>
+            
+                <p id="condition"><%=parsedData['current']['condition']['text']%></p>
+            
+            </div>
+            <div class="jumbotron" id="jumbo1">
+                <li>
+                    <span><i
+                            class="fas fa-thermometer-half fa-3x"></i></span><span class="explain" id="press"><%=parsedData['current']['pressure_mb']%><span class="units">hpa</span></span><span class="context">Pressure</span>
+                </li><br>
+                <li><span><i class="fas fa-wind fa-3x "></i></span><span class="explain" id="speed"><%=parsedData['current']['wind_kph']%><span class="units">km/h</span></span><span
+                        class="context">Wind Speed</span></li><br>
+                <li><span><i class="far fa-compass fa-3x"></i></span><span class="explain" id="direction"><%=parsedData['current']['wind_degree']%><span class="units">degrees</span></span><span
+                        class="context">Wind Direction</span></li><br>
+                <li><span><i class="fas fa-tint fa-3x"></i></span><span class="explain" id="humid"><%=parsedData['current']['humidity']%>%</span><span
+                        class="context">Humidity</span></li><br>
+                <li><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-sunrise">
+                            <path d="M17 18a5 5 0 0 0-10 0"></path>
+                            <line x1="12" y1="2" x2="12" y2="9"></line>
+                            <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
+                            <line x1="1" y1="18" x2="3" y2="18"></line>
+                            <line x1="21" y1="18" x2="23" y2="18"></line>
+                            <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
+                            <line x1="23" y1="22" x2="1" y2="22"></line>
+                            <polyline points="8 6 12 2 16 6"></polyline>
+                        </svg></span><span class="explain" id="sunrise"><%=parsedData['forecast']['forecastday'][0]['astro']['sunrise']%></span><span
+                        class="context">Sunrise</span></li><br>
+                <li><span><img src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Weather-Sunset-icon.png"
+                            width="70"
+                            height="50"></span><span class="explain" id="sunset"><%=parsedData['forecast']['forecastday'][0]['astro']['sunset']%></span><span
+                        class="context">Sunset</span>
+                </li><br>
+                <li><span><img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/32/519910-103_Moonrise-512.png" width="80" height="70" style="margin-left: -1%;"></span><span class="explain" id="moonrise"><%=parsedData['forecast']['forecastday'][0]['astro']['moonrise']%></span><span class="context">Moonrise</span></li><br>
+                <li><span><i class="fas fa-calendar-alt fa-3x"></i></span>
+                        <span class="explain" id="updated"><%=parsedData['current']['last_updated']%></span>
+                        <span class="context">Last Updated</span>
+                    </li><br>
+                <li>
+                    <span><i class="far fa-sun fa-3x"></i></span><span class="explain"
+                        id="uv"><%=parsedData['current']['uv']%><span class="units"></span></span><span
+                        class="context">U V Index</span>
+                </li><br>
+            </div>
+            <div class="jumbotron" id="jump">
+                <li>
+                    <h2>Today, <%=parsedData['forecast']['forecastday'][0]['date']%></h2><span><img src='<%=parsedData['forecast']['forecastday'][0]['day']['condition']['icon']%>' width="100" height="90"></span><span class="forecast"><%=parsedData['forecast']['forecastday'][0]['day']['condition']['text']%></span>
+                <span class="forecastemp"><%=parsedData['forecast']['forecastday'][0]['day']['avgtemp_c']%>°C</span></li>
+                <li> <h2>Tommorrow, <%=parsedData['forecast']['forecastday'][1]['date']%></h2><span><img src='<%=parsedData['forecast']['forecastday'][1]['day']['condition']['icon']%>' width="100" height="90"></span>
+                    <span class="forecast"><%=parsedData['forecast']['forecastday'][1]['day']['condition']['text']%></span>
+                    <span class="forecastemp"><%=parsedData['forecast']['forecastday'][1]['day']['avgtemp_c']%>°C</span></li>
+                <li><h2>Day After, <%=parsedData['forecast']['forecastday'][2]['date']%></h2><span><img src='<%=parsedData['forecast']['forecastday'][2]['day']['condition']['icon']%>' width="100" height="90"></span>
+                <span class="forecast"><%=parsedData['forecast']['forecastday'][2]['day']['condition']['text']%></span>
+                <span class="forecastemp"><%=parsedData['forecast']['forecastday'][2]['day']['avgtemp_c']%>°C</span></li>
+                        
+            </div>
+            
+    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    
+</html>
